@@ -1,0 +1,14 @@
+# Ignore installed dependencies
+node_modules/
+public/libs
+
+# Ignore editor artifacts
+*.swp
+*~
+
+# Ignore node stuff
+npm-debug.log
+
+# Annoying mac stuff
+.DS_Store
+

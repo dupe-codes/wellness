@@ -1,0 +1,22 @@
+{
+    "name": "wellness",
+    "description": "A full-stack application to track mood and activity to better people's lives",
+    "author": "Dup <njdupp@gmail.com>",
+    "version": "0.1.0",
+    "main": "server.js",
+    "dependencies": {
+        "express": "~4.5.x",
+        "mongoose": "~3.8.x",
+        "body-parser" : "~1.4.x",
+        "method-override": "~2.0.x",
+        "jade": "1.5.x",
+        "morgan": "~1.0.0"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.x",
+        "grunt-contrib-jshint": "~0.10.x",
+        "grunt-contrib-nodeunit": "~0.4.x",
+        "grunt-contrib-uglify": "~0.5.x"
+    },
+    "engine": "node 0.10.x"
+}

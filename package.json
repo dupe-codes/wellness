@@ -16,7 +16,14 @@
         "grunt": "~0.4.x",
         "grunt-contrib-jshint": "~0.10.x",
         "grunt-contrib-nodeunit": "~0.4.x",
-        "grunt-contrib-uglify": "~0.5.x"
+        "grunt-contrib-uglify": "~0.5.x",
+        "grunt-contrib-cssmin": "*",
+        "grunt-contrib-sass": "*",
+        "grunt-contrib-watch": "*",
+        "grunt-mocha-test": "*",
+        "grunt-karma": "~0.8.2",
+        "karma": "~0.12.0",
+        "matchdep": "*"
     },
     "engine": "node 0.10.x"
 }

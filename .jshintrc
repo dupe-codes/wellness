@@ -1,0 +1,18 @@
+{
+    "node": true, // Enable globals in nodeJS
+    "browser": true, // Enable browser globals
+    "strict": true, // require 'use strict' pragma in files
+    "unused": false, // Warn when vars unused
+    "trailing": true, // No trailing whitespace
+    "globals": {
+        "angular": true
+    },
+    "predef": [
+        "define",
+        "require",
+        "exports",
+        "module"
+    ],
+    "indent": 4,
+    "devel": true
+}

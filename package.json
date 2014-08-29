@@ -9,7 +9,8 @@
         "mongoose": "~3.8.x",
         "body-parser" : "~1.4.x",
         "method-override": "~2.0.x",
-        "jade": "1.5.x",
+        "swig": "*",
+        "consolidate": "*",
         "morgan": "~1.0.0"
     },
     "devDependencies": {

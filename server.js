@@ -40,7 +40,7 @@ var index = require('./app/routes/index');
 app.use('/', index);
 
 var users = require('./app/routes/users');
-app.use('/users', users)
+app.use('/users', users);
 
 // TODO: Look into how to factor this code below out in a clean way
 app.use(function(req, res, next) {

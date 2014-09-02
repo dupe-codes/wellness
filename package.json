@@ -3,10 +3,15 @@
     "description": "A full-stack application to track mood and activity to better people's lives",
     "author": "Dup <njdupp@gmail.com>",
     "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/njdup/wellness.git"
+    },
     "main": "server.js",
     "dependencies": {
         "express": "~4.5.x",
         "mongoose": "~3.8.x",
+        "mongoose-unique-validator": "0.3.0",
         "body-parser" : "~1.4.x",
         "method-override": "~2.0.x",
         "swig": "*",

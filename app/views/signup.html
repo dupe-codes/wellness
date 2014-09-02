@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% import 'macros/form.html' as form %}
+
+{% block content %}
+
+<h1>Create a new account!</h1>
+<form name="create_account" action="/users/" method="post">
+    <ul>
+        <li>{{ form.input("text", "firstname", "First Name") }}</li>
+        <li>{{ form.input("text", "lastname", "Last Name") }}</li>
+        <li>{{ form.input("text", "email", "Email Address") }}</li>
+        <li>{{ form.input("text", "username", "Username") }}</li>
+        <li>{{ form.input("text", "password", "Password") }}</li>
+    </ul>
+    {{ form.button() }}
+</form>
+
+{% endblock %}

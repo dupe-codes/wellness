@@ -1,5 +1,10 @@
 'use strict';
 
+/*
+ * Initializes and runs the server.
+ * TODO: Export most of this into a configuration file
+ */
+
 // Modules 
 var express = require('express');
 var path = require('path');
@@ -9,6 +14,7 @@ var methodOverride = require('method-override');
 var logger = require('morgan');
 var consolidate = require('consolidate');
 var swig = require('swig');
+var passport = require('passport');
 // TODO: Look into what bodyParser and methodOverride do
 
 var app = express();
@@ -23,6 +29,7 @@ mongoose.connect(db.url);
 // Get all data of body parameters (POSTs)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride());
 
 //Expose static files as residing in top level domain
 app.use(express.static(__dirname + '/public/static'));
@@ -35,12 +42,15 @@ app.set('views', path.join(__dirname, '/app/views'));
 app.set('view engine', 'html');
 app.engine('.html', consolidate.swig);
 
+app.use(passport.initialize());
+
 // Routes
 var index = require('./app/routes/index');
 app.use('/', index);
 
 var users = require('./app/routes/users');
 app.use('/users', users);
+
 
 // TODO: Look into how to factor this code below out in a clean way
 app.use(function(req, res, next) {
@@ -56,6 +66,12 @@ app.use(function(err, req, res, next){
         error: err
     });
 });
+
+// Initialize passport authentication
+// TODO: Needs to be moved above the definition of routes
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')();
 
 // Start application
 var port = process.env.PORT || 8080;

@@ -2,75 +2,20 @@
 
 /*
  * Initializes and runs the server.
- * TODO: Export most of this into a configuration file
  */
 
-// Modules 
-var express = require('express');
-var path = require('path');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var logger = require('morgan');
-var consolidate = require('consolidate');
-var swig = require('swig');
-var passport = require('passport');
-// TODO: Look into what bodyParser and methodOverride do
+var config = require('./config/config'),
+    mongoose = require('mongoose');
 
-var app = express();
+// Create connection to the database
+var db = mongoose.connect(config.db);
 
-// Configurations
-app.use(logger('dev'));
-// Make an applications settings module and import it here?
+// TODO: Here, load up all models to get rid of dependencies
 
-var db = require('./config/db');
-mongoose.connect(db.url);
+// Initialize the application
+var app = require('./config/express')(db);
 
-// Get all data of body parameters (POSTs)
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride());
-
-//Expose static files as residing in top level domain
-app.use(express.static(__dirname + '/public/static'));
-
-// Serverside views
-app.set('views', path.join(__dirname, '/app/views'));
-
-// Now using swig. TODO: Maybe convert to handlebars? Want something that
-// is well known enough for others to hop aboard
-app.set('view engine', 'html');
-app.engine('.html', consolidate.swig);
-
-app.use(passport.initialize());
-
-// Routes
-var index = require('./app/routes/index');
-app.use('/', index);
-
-var users = require('./app/routes/users');
-app.use('/users', users);
-
-
-// TODO: Look into how to factor this code below out in a clean way
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-app.use(function(err, req, res, next){
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: err
-    });
-});
-
-// Initialize passport authentication
-// TODO: Needs to be moved above the definition of routes
-app.use(passport.initialize());
-app.use(passport.session());
+// Bootstrap passport strategy configuration
 require('./config/passport')();
 
 // Start application

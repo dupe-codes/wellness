@@ -7,7 +7,6 @@
 var express = require('express');
 var router = express.Router();
 var UserController = require('../controllers/UserController.js');
-var passport = require('passport');
 
 /* Render user signin page */
 router.get('/signin', function(req, res) {

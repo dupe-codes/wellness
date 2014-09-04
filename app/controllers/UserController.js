@@ -10,6 +10,7 @@ var passport = require('passport');
 
 /* Creates a new user account
  * TODO: Add in validations and checks before saving the new account
+ * Add in redirects
  */
 exports.create_account = function(request, response) {
     var new_account = new User(request.body);

@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
     // Files to watch
     var watchFiles = {
-        serverJS: ['gruntfile.js', 'server.js', 'app/**/*.js'],
+        serverJS: ['gruntfile.js', 'server.js', 'app/**/*.js', 'config/*.js', 'config/**/*.js'],
         clientJS: ['public/*.js', 'public/static/js/*.js']
     };
 

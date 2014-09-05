@@ -6,7 +6,7 @@
  */
 
  var passport = require('passport');
- var LocalStrategy = require('passport-local').Strategy
+ var LocalStrategy = require('passport-local').Strategy;
  var User = require('mongoose').model('User');
 
 /* Exports function which defines the strategy to use for local authentication */
@@ -19,7 +19,7 @@
     function(username, password, done) {
         User.findOne({ username: username }, function(err, user) {
             // Some error occured
-            if (err) { return done(err) }
+            if (err) { return done(err); }
             // User with given username doesn't exist
             if (!user) { return done(null, false, { message: 'Unknown user' }); }
 

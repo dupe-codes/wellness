@@ -26,7 +26,7 @@ module.exports = function(db) {
     app.use(methodOverride());
 
     // Expose static files as residing in top level domain
-    app.use(express.static(__dirname + '../public/static'));
+    app.use(express.static(path.join(__dirname, '../public')));
 
     // Set up serverside views template engine
     app.set('views', path.join(__dirname, '../app/views'));

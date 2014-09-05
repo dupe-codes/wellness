@@ -19,9 +19,8 @@ var app = require('./config/express')(db);
 require('./config/passport')();
 
 // Start application
-var port = process.env.PORT || 8080;
-app.listen(port);
-console.log('Wellness awaits on port ' + port);
+app.listen(config.port);
+console.log('Wellness awaits on port ' + config.port);
 
 // Expose app TODO: Look into why we need to do this
 exports = module.exports = app;

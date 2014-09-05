@@ -1,0 +1,9 @@
+{
+    "name": "wellness",
+    "version": "0.1.0",
+    "description": "A full-stack application to track mood and activity to better people's lives",
+    "dependencies": {
+        "bootstrap": "~3",
+        "angular": "~1.2"
+    }
+}

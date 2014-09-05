@@ -1,6 +1,6 @@
 # Ignore installed dependencies
 node_modules/
-public/libs
+public/lib
 
 # Ignore editor artifacts
 *.swp

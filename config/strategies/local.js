@@ -9,7 +9,7 @@
  var LocalStrategy = require('passport-local').Strategy;
  var User = require('mongoose').model('User');
 
-/* Exports function which defines the strategy to use for local authentication */
+/* Defines strategy for local authentication */
  module.exports = function() {
 
     passport.use(new LocalStrategy({

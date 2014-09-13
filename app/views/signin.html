@@ -1,6 +1,19 @@
 {% extends 'layout.html' %}
+{% import 'macros/form.html' as form %}
 
 {% block content %}
-    <h1>Sign in page!</h1>
-    <a href="/users/signup">Create an account</a>
+
+    <div class="container">
+        <h1>Sign in</h1>
+        <form name="user_signin" action="/users/signin" method="post">
+            <ul>
+                <li>{{ form.input("text", "username", "Username") }}</li>
+                <li>{{ form.input("password", "password", "Password") }}</li>
+            </ul>
+            {{ form.button() }}
+        </form>
+
+        <p>Don't have an account? <a href="/users/signup">Create one!</a></p>
+
+    </div>
 {% endblock %}

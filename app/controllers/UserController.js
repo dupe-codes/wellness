@@ -27,8 +27,15 @@ exports.create_account = function(request, response) {
 exports.signin = function(request, response, next) {
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/users/signin'
+        failureRedirect: '/users/signin',
+        failureFlash: true
     })(request, response, next);
+};
+
+/* Destroys the current session, logging the user out */
+exports.signout = function(request, response, next) {
+    request.logout();
+    response.redirect('/');
 };
 
 /* Returns a list of all registered users */

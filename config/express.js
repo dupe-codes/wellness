@@ -11,7 +11,14 @@ var express = require('express'),
     logger = require('morgan'),
     consolidate = require('consolidate'),
     swig = require('swig'),
-    passport = require('passport');
+    passport = require('passport'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
+    mongoStore = require('connect-mongo')({
+        session: session
+    }),
+    config = require('./config'),
+    flash = require('connect-flash');
 
 module.exports = function(db) {
     var app = express();
@@ -33,9 +40,21 @@ module.exports = function(db) {
     app.set('view engine', 'html');
     app.engine('.html', consolidate.swig);
 
+    // Configure MongoDB session store
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: config.sessionSecret,
+        store: new mongoStore({
+            db: db.connection.db,
+            collection: config.sessionCollection
+        })
+    }));
+
     // Configure passport middleware session management
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(flash()) // To display error messages
 
     // Load application routes
     require('./routes')(app);

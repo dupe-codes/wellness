@@ -12,4 +12,7 @@
     // User routes
     app.use('/users', require('../app/routes/users'));
 
+    // App routes
+    app.use('/app', require('../app/routes/app'));
+
 };

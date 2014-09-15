@@ -14,20 +14,19 @@
 
     passport.use(new LocalStrategy({
         usernameField: 'username',
-        passwordField: 'password'
+        passwordField: 'password',
+        passReqToCallback: true
     },
-    function(username, password, done) {
+    function(req, username, password, done) {
         User.findOne({ username: username }, function(err, user) {
             // Some error occured
             if (err) { return done(err); }
             // User with given username doesn't exist
-            if (!user) { return done(null, false, { message: 'Unknown user' }); }
+            if (!user) { return done(null, false, req.flash('loginError', 'Unknown user')); }
 
             // User exists, see if valid password given
             if(!user.authenticate(password)) {
-                return done(null, false, {
-                    message: 'Invalid password'
-                });
+                return done(null, false, req.flash('loginError', 'Oops! Wrong password'));
             }
 
             return done(null, user);

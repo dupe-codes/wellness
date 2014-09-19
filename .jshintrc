@@ -13,6 +13,8 @@
         "exports",
         "module"
     ],
-    "indent": 4,
+    "indent": 2,
+    "quotmark": "single",
+    "camelcase": true,
     "devel": true
 }

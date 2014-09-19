@@ -1,18 +1,18 @@
 'use strict';
 
-/*
- * Configures all application routes
- */
 
- module.exports = function(app) {
+// Configures all application routes
 
-    // Index routes
-    app.use('/', require('../app/routes/index'));
 
-    // User routes
-    app.use('/users', require('../app/routes/users'));
+module.exports = function(app) {
 
-    // App routes
-    app.use('/app', require('../app/routes/app'));
+  // Index routes
+  app.use('/', require('../app/routes/index'));
+
+  // User routes
+  app.use('/users', require('../app/routes/users'));
+
+  // App routes
+  app.use('/app', require('../app/routes/app'));
 
 };

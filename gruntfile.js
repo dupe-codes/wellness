@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     };
 
     // Load npm tasks
-    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     // Project Configuration
     grunt.initConfig({

@@ -1,11 +1,11 @@
 'use strict';
 
-/*
- * Initializes and runs the server.
- */
 
-var config = require('./config/config'),
-    mongoose = require('mongoose');
+// Initializes and runs the server.
+
+
+var config = require('./config/config');
+var mongoose = require('mongoose');
 
 // Create connection to the database
 var db = mongoose.connect(config.db);

@@ -18,8 +18,9 @@ module.exports = function() {
   },
   function(req, username, password, done) {
     User.findOne({ username: username }, function(err, user) {
-    // Some error occured
-    if (err) { return done(err); }
+      // Some error occured
+      if (err) { return done(err); }
+
       // User with given username doesn't exist
       if (!user) { return done(null, false, req.flash('loginError', 'Unknown user')); }
 
@@ -31,4 +32,5 @@ module.exports = function() {
       return done(null, user);
     });
   }));
+
 };
